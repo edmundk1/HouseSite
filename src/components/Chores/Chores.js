@@ -24,7 +24,7 @@ function createData(icon, chore, assignee) {
 const rows = [
   createData(dustIcon, 'Dust', 'Kitty'),
   createData(vacuumIcon, 'Vacuum', 'Edmund'),
-  createData(sweepAndMopIcon, 'Sweep and Mop', 'Tuscany'),
+  createData(sweepAndMopIcon, 'Sweep and Mop', 'Wei'),
   createData(wipeIcon, 'Wipe Surfaces', 'Dayan'),
   createData(trashIcon, 'Trash', 'Amy'),
 ];
