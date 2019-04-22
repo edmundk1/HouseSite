@@ -8,13 +8,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import dustIcon from '../images/dust.png';
-import vacuumIcon from'../images/vacuum.png';
-import sweepAndMopIcon from '../images/mopandsweep.png';
-import wipeIcon from '../images/wipe.png';
-import trashIcon from '../images/trash.png';
-
-
 let id = 0;
 
 function createData(chore, description, assignee) {
