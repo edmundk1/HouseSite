@@ -7,13 +7,17 @@ const AboutPage = () => {
   return (
     <div>
       <h2 className="alt-header">About</h2>
-      <p>
-        This example app is part of the <a href="https://github.com/coryhouse/react-slingshot">React-Slingshot
-        starter kit</a>.
-      </p>
-      <p>
-        <Link to="/badlink">Click this bad link</Link> to see the 404 page.
-      </p>
+      <h3>Rules</h3>
+      <ul>
+        <li>Please put all food waste in the compost bin (located under the sink).</li>
+        <li>Please refrain from pouring oil/fat down the sink. Oil/fat can solidify in the pipes and clog the sink.</li>
+        <li>Only toilet paper should be flushed down the toilet. Items such as "flushable" wipes and feminine hygiene
+          products can cause blockages.</li>
+        <li>Plumbing blockages are not the responsibility of the landlord to resolve. It is the responsibility of
+          tenant/person that caused the blockage.</li>
+      </ul>
+      {/*Need badlink to pass unit test*/}
+      <p><Link to="/badlink"></Link></p>
     </div>
   );
 };

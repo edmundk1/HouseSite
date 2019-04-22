@@ -3,7 +3,6 @@ import { NavLink, Route, Switch } from "react-router-dom";
 
 import AboutPage from "./AboutPage";
 import Chores from "./Chores/Chores";
-import Bills from "./Bills/Bills"
 import FixItTickets from "./FixItTickets/FixItTickets"
 import HomePage from "./HomePage";
 import NotFoundPage from "./NotFoundPage";
@@ -24,9 +23,7 @@ class App extends React.Component {
                 <div>
                     <NavLink exact to="/" activeStyle={activeStyle}>Home</NavLink>
                     {' | '}
-                    <NavLink to="/chores" activeStyle={activeStyle}>Chores</NavLink>
-                    {' | '}
-                    <NavLink to="/bills" activeStyle={activeStyle}>Bills</NavLink>
+                    <NavLink to="/chores">Chores</NavLink>
                     {' | '}
                     <NavLink to="/fixittickets" activeStyle={activeStyle}>Fix-it Tickets</NavLink>
                     {' | '}
@@ -35,7 +32,6 @@ class App extends React.Component {
                 <Switch>
                     <Route exact path="/" component={HomePage} />
                     <Route path="/chores" component={Chores} />
-                    <Route path="/bills" component={Bills} />
                     <Route path="/fixittickets" component={FixItTickets} />
                     <Route path="/about" component={AboutPage} />
                     <Route component={NotFoundPage} />

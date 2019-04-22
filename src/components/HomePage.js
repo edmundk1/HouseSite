@@ -92,20 +92,20 @@ const images = [
         path: '/chores'
     },
     {
-        url: BillsImage,
-        title: 'Bills',
-        width: '100%',
-        height: '20%',
-        padding: 10,
-        path: '/bills'
-    },
-    {
         url: FixItImage,
         title: 'Fix-it Tickets',
         width: '100%',
         height: '20%',
         padding: 10,
         path: '/fixittickets'
+    },
+    {
+        url: BillsImage,
+        title: 'About',
+        width: '100%',
+        height: '20%',
+        padding: 10,
+        path: '/about'
     },
 ];
 
