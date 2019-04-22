@@ -11,8 +11,8 @@ const AboutPage = () => {
       <ul>
         <li>Please put all food waste in the compost bin (located under the sink).</li>
         <li>Please refrain from pouring oil/fat down the sink. Oil/fat can solidify in the pipes and clog the sink.</li>
-        <li>Only toilet paper should be flushed down the toilet. Items such as "flushable" wipes and feminine hygiene
-          products can cause blockages.</li>
+        <li>Only toilet paper should be flushed down the toilet. Items such as &quot;flushable&quot; wipes and feminine
+          hygiene products can cause blockages.</li>
         <li>Plumbing blockages are not the responsibility of the landlord to resolve. It is the responsibility of
           tenant/person that caused the blockage.</li>
       </ul>
