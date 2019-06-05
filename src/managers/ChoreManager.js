@@ -9,34 +9,34 @@ export const choresList = {
 };
 
 const assignees = ['Kitty', 'Amy', 'Dayan', 'Wei', 'Edmund'];
+let id = -1;
+export let rotatedAssignees = assignees;
 
-export function RotateAssignees() {
-  let newAssigneeArr = assignees.sort(function() {return 0.5 - Math.random() });
-  // while (newAssigneeArr[0] === 'Wei') {
-  //   console.log('new list: ', newAssigneeArr);
-  //   newAssigneeArr = assignees.sort(function() {return 0.5 - Math.random() });
-  // }
-  return newAssigneeArr;
+export function createData(chore, description) {
+  id++;
+  return {id, chore, description};
 }
 
-let currentDate = new Date();
+function shuffle(a) {
 
-let currentDay = currentDate.getDay();
-
-let currentHour = currentDate.getHours();
-
-export default class ChoreManager extends React.Component {
-  constructor(props) {
-    super(props);
-
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
   }
+  return a;
+}
 
-  shuffleArray(array) {
+let now = new Date();
+let day = now.getDay();
+let mondayIndex = 1;
 
+export function RotateAssignees() {
+  let newAssigneeArr = assignees;
+  if (day ===  mondayIndex) {
+    let newAssigneeArr = shuffle(assignees);
+    while (newAssigneeArr[0] === 'Wei' || newAssigneeArr[2] === 'Wei') {
+      newAssigneeArr = shuffle(assignees);
+    }
   }
-
-  rotateAssignee(assignee) {
-    let newAssigneeArr = assignee.sort(function() {return 0.5 - Math.random() });
-    return newAssigneeArr;
-  }
+  rotatedAssignees = newAssigneeArr;
 }
