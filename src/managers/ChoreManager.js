@@ -12,6 +12,8 @@ const assignees = ['Kitty', 'Amy', 'Dayan', 'Wei', 'Edmund'];
 let id = -1;
 export let rotatedAssignees = assignees;
 
+let rotated = false;
+
 export function createData(chore, description) {
   id++;
   return {id, chore, description};
@@ -29,14 +31,19 @@ function shuffle(a) {
 let now = new Date();
 let day = now.getDay();
 let mondayIndex = 1;
+let sundayIndex = 0;
 
 export function RotateAssignees() {
   let newAssigneeArr = assignees;
-  if (day ===  mondayIndex) {
+  if (day ===  mondayIndex && !rotated) {
     let newAssigneeArr = shuffle(assignees);
     while (newAssigneeArr[0] === 'Wei' || newAssigneeArr[2] === 'Wei') {
       newAssigneeArr = shuffle(assignees);
     }
   }
+  if (day === sundayIndex) {
+    rotated = false;
+  }
   rotatedAssignees = newAssigneeArr;
+  rotated = true;
 }
