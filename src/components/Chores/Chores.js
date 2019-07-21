@@ -1,94 +1,79 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import {choresList, RotateAssignees, createData} from '../../managers/ChoreManager';
 
-let id = 0;
 
-function createData(chore, description, assignee) {
-  id += 1;
-  return { id, chore, description, assignee };
-}
-const rows = [
-  createData(
-    'Kitchen',
-    'Wipe down all surfaces in the kitchen with the Clorox wipes. Scrub the sink and the dish rack.',
-    'Kitty'
-  ),
-  createData(
-    'Vacuum & Dust',
-    'Vacuum the living room and entire hallway. Dust all blinds and surfaces in the public spaces.',
-    'Edmund'
-  ),
-  createData(
-    'Sweep and Mop',
-    'Sweep then mop the kitchen and dining room floor.',
-    'Wei'
-  ),
-  createData(
-    'Trash Bins',
-    'Take out a trash bin of each color (blue, green, and black) on Sunday and bring them in on Monday.',
-    'Dayan'
-  ),
-  createData(
-    'Trash',
-    'Take out the kitchen recycling, trash, and compost from under the sink. Recycling goes in the blue bin,' +
-    'trash goes in the black bin, and compost goes in the green bin.',
-    'Amy'),
-];
+export default class Chores extends React.Component {
 
-function SimpleTable(props) {
-  const { classes } = props;
+  constructor(props) {
+    super(props);
 
-  return (
-    <Paper className={classes.root}>
-      <Table className={classes.table}>
-        <TableHead className={classes.head}>
-          <TableRow>
-            <TableCell>Chore</TableCell>
-            <TableCell>Description</TableCell>
-            <TableCell>Assignee</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map(row => {
-            return (
-              <TableRow key={row.id}>
-                <TableCell component="th" scope="row">{row.chore}</TableCell>
-                <TableCell>{row.description}</TableCell>
-                <TableCell>{row.assignee}</TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
-    </Paper>
-  );
-}
-
-SimpleTable.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-const styles = theme => ({
-  root: {
-    width: '100%',
-    marginTop: theme.spacing.unit * 3,
-    overflowX: 'auto',
-  },
-  table: {
-    minWidth: 400,
-  },
-  head: {
-    background: '#bababa',
-    fontSize: 20,
-    fontWeight: 'bold'
+    this.state = {
+      rows: [
+        createData(
+          choresList.KITCHEN,
+          'Wipe down all surfaces in the kitchen with the Clorox wipes. Scrub the sink and the dish rack.',
+        ),
+        createData(
+          choresList.VACUUMANDDUST,
+          'Vacuum the living room and entire hallway. Dust all blinds and surfaces in the public spaces.',
+        ),
+        createData(
+          choresList.SWEEPANDMOP,
+          'Sweep then mop the kitchen and dining room floor.',
+        ),
+        createData(
+          choresList.TRASH,
+          'Take out the kitchen recycling, trash, and compost from under the sink. Recycling goes in the ' +
+          'blue bin, trash goes in the black bin, and compost goes in the green bin. Also take out a trash bin of ' +
+          'each color (blue, green, and black) on Sunday and bring them in on Monday.' ,
+        )
+        ,
+      ],
+      assignees: RotateAssignees(),
+    }
   }
-});
 
-export default withStyles(styles)(SimpleTable);
+  rotateAssignees() {
+    RotateAssignees();
+    this.setState({assignees: rotatedAssignees})
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      this.rotateAssignees();
+      }, 10800000); //Check every 3hrs
+  }
+
+  render() {
+    return (
+      <Paper>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Chore</TableCell>
+              <TableCell>Description</TableCell>
+              <TableCell>Assignee</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {this.state.rows.map(row => {
+              return (
+                <TableRow key={row.id}>
+                  <TableCell component="th" scope="row">{row.chore}</TableCell>
+                  <TableCell>{row.description}</TableCell>
+                  <TableCell>{this.state.assignees[row.id]}</TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </Paper>
+    );
+  }
+}
