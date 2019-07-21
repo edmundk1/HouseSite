@@ -4,11 +4,10 @@ export const choresList = {
   KITCHEN: "Kitchen",
   VACUUMANDDUST: "Vacuum & Dust ",
   SWEEPANDMOP: "Sweep & Mop",
-  TRASHBINS: "Trash Bins",
-  TRASH: "Trash",
+  TRASH: "Trash & Trash Bins",
 };
 
-const assignees = ['Kitty', 'Amy', 'Dayan', 'Wei', 'Edmund'];
+const assignees = ['Kitty', 'Amy', 'Wei', 'Edmund'];
 let id = -1;
 
 export function createData(chore, description) {

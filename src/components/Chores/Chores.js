@@ -28,13 +28,10 @@ export default class Chores extends React.Component {
           'Sweep then mop the kitchen and dining room floor.',
         ),
         createData(
-          choresList.TRASHBINS,
-          'Take out a trash bin of each color (blue, green, and black) on Sunday and bring them in on Monday.',
-        ),
-        createData(
           choresList.TRASH,
           'Take out the kitchen recycling, trash, and compost from under the sink. Recycling goes in the ' +
-          'blue bin, trash goes in the black bin, and compost goes in the green bin.',
+          'blue bin, trash goes in the black bin, and compost goes in the green bin. Also take out a trash bin of ' +
+          'each color (blue, green, and black) on Sunday and bring them in on Monday.' ,
         )
         ,
       ],
