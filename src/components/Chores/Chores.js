@@ -39,17 +39,6 @@ export default class Chores extends React.Component {
     }
   }
 
-  rotateAssignees() {
-    RotateAssignees();
-    this.setState({assignees: rotatedAssignees})
-  }
-
-  componentDidMount() {
-    setInterval(() => {
-      this.rotateAssignees();
-      }, 10800000); //Check every 3hrs
-  }
-
   render() {
     return (
       <Paper>
