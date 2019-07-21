@@ -5,7 +5,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import {choresList, RotateAssignees, createData, rotatedAssignees} from '../../managers/ChoreManager';
+import {choresList, RotateAssignees, createData} from '../../managers/ChoreManager';
 
 
 export default class Chores extends React.Component {
@@ -38,14 +38,14 @@ export default class Chores extends React.Component {
         )
         ,
       ],
-      assignees: ['Kitty', 'Amy', 'Dayan', 'Wei', 'Edmund'],
+      assignees: RotateAssignees(),
     }
   }
 
   rotateAssignees() {
     RotateAssignees();
     this.setState({assignees: rotatedAssignees})
-  };
+  }
 
   componentDidMount() {
     setInterval(() => {

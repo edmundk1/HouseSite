@@ -1,4 +1,4 @@
-import React from 'react';
+import moment from 'moment';
 
 export const choresList = {
   KITCHEN: "Kitchen",
@@ -10,40 +10,31 @@ export const choresList = {
 
 const assignees = ['Kitty', 'Amy', 'Dayan', 'Wei', 'Edmund'];
 let id = -1;
-export let rotatedAssignees = assignees;
-
-let rotated = false;
 
 export function createData(chore, description) {
   id++;
   return {id, chore, description};
 }
 
-function shuffle(a) {
-
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
+function shuffle(array, shift) {
+  let newOrder = {};
+  let newArr = [];
+  let arrLength = array.length;
+  let index;
+  for (let i = 0; i < arrLength; i++) {
+    index = (i+shift)%arrLength;
+    newOrder[index] = array[i];
   }
-  return a;
+  for (let i = 0; i < arrLength; i++) {
+    newArr.push(newOrder[i]);
+  }
+  return newArr;
 }
-
-let now = new Date();
-let day = now.getDay();
-let mondayIndex = 1;
-let sundayIndex = 0;
+let week = moment().week();
 
 export function RotateAssignees() {
-  let newAssigneeArr = assignees;
-  if (day ===  mondayIndex && !rotated) {
-    let newAssigneeArr = shuffle(assignees);
-    while (newAssigneeArr[0] === 'Wei' || newAssigneeArr[2] === 'Wei') {
-      newAssigneeArr = shuffle(assignees);
-    }
-  }
-  if (day === sundayIndex) {
-    rotated = false;
-  }
-  rotatedAssignees = newAssigneeArr;
-  rotated = true;
+  let shift = week%assignees.length;
+  let newAssigneeArr = shuffle(assignees, shift);
+
+  return newAssigneeArr;
 }
