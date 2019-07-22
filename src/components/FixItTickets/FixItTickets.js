@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import dustIcon from '../images/dust.png'
+import dustIcon from '../images/dust.png';
+import { sendTicket, initEmailJS } from '../../managers/FixitTicketManager';
 
 const styles = theme => ({
   button: {
@@ -44,6 +45,16 @@ class OutlinedTextFields extends React.Component {
     });
   };
 
+  handleClick = () => {
+    let ticket = document.getElementById("outlined-multiline-static").value;
+    sendTicket(ticket);
+    window.location.reload();
+  };
+
+  componentDidMount() {
+    initEmailJS();
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -62,7 +73,7 @@ class OutlinedTextFields extends React.Component {
           />
         </form>
         <label htmlFor="contained-button-file">
-          <Button variant="contained" component="span" className={classes.button}>
+          <Button variant="contained" component="span" className={classes.button} onClick={this.handleClick}>
             Send
           </Button>
         </label>
