@@ -1,12 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/about-page.css';
+import styled from "styled-components";
+import {Typography} from "@material-ui/core";
+
+const PaddedTypography = styled(Typography)`
+    padding: 10px 0px;
+    color: green;
+`;
 
 // Since this component is simple and static, there's no parent container for it.
 const AboutPage = () => {
   return (
     <div>
-      <h2 className="alt-header">About</h2>
+      <PaddedTypography variant="h4">About</PaddedTypography>
       <h3>Rules</h3>
       <ul>
         <li>Please put all food waste in the compost bin (located under the sink).</li>

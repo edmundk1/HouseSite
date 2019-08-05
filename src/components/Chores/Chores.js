@@ -6,7 +6,13 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {choresList, RotateAssignees, createData} from '../../managers/ChoreManager';
+import {Typography} from "@material-ui/core";
+import styled from "styled-components";
 
+const PaddedTypography = styled(Typography)`
+    padding: 10px 0px;
+    color: green;
+`;
 
 export default class Chores extends React.Component {
 
@@ -41,28 +47,31 @@ export default class Chores extends React.Component {
 
   render() {
     return (
-      <Paper>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Chore</TableCell>
-              <TableCell>Description</TableCell>
-              <TableCell>Assignee</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {this.state.rows.map(row => {
-              return (
-                <TableRow key={row.id}>
-                  <TableCell component="th" scope="row">{row.chore}</TableCell>
-                  <TableCell>{row.description}</TableCell>
-                  <TableCell>{this.state.assignees[row.id]}</TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </Paper>
+      <div>
+        <PaddedTypography variant="h4">Chores</PaddedTypography>
+        <Paper>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Chore</TableCell>
+                <TableCell>Description</TableCell>
+                <TableCell>Assignee</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {this.state.rows.map(row => {
+                return (
+                  <TableRow key={row.id}>
+                    <TableCell component="th" scope="row">{row.chore}</TableCell>
+                    <TableCell>{row.description}</TableCell>
+                    <TableCell>{this.state.assignees[row.id]}</TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </Paper>
+      </div>
     );
   }
 }

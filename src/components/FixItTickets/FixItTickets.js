@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import dustIcon from '../images/dust.png'
+import {Typography} from "@material-ui/core";
+import styled from "styled-components";
 
 const styles = theme => ({
   button: {
@@ -30,12 +31,13 @@ const styles = theme => ({
   },
 });
 
+const PaddedTypography = styled(Typography)`
+  padding: 10px 5px;
+  color: green;
+`;
+
 class OutlinedTextFields extends React.Component {
   state = {
-    name: 'Cat in the Hat',
-    age: '',
-    multiline: 'Controlled',
-    currency: 'EUR',
   };
 
   handleChange = name => event => {
@@ -49,7 +51,7 @@ class OutlinedTextFields extends React.Component {
 
     return (
       <div>
-        <img src= { dustIcon } className={classes.dense}/>
+        <PaddedTypography variant="h4">Maintenance Requests</PaddedTypography>
         <form className={classes.container} noValidate autoComplete="off">
           <TextField
             id="outlined-multiline-static"
